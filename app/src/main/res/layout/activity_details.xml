@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingTop="24dp"
+    android:paddingBottom="24dp"
+    android:background="@color/cardview_shadow_start_color">
+
+    <EditText
+        android:id="@+id/et_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/et_activity_details"
+        />
+    <Button
+        android:id="@+id/b_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/b_search"
+        />
+    <TextView
+        android:id="@+id/tv_resultados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Resultados de la búsqueda aquí"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+</LinearLayout>
