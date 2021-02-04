@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 
 class MainActivityViewModel : ViewModel() {
 
-    suspend fun getApiResults() : List <String> {
+    suspend fun getApiResults() : List <Makeup> {
         return withContext(Dispatchers.IO) {
             val resultado = GlobalScope.async {
                 DownloadManager.downloadApiResults()

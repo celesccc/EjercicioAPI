@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 
 class AdapterString : RecyclerView.Adapter<AdapterString.StringViewHolder> () {
 
-    private var listaDatos : List<String>? = null
+    private var listaDatos : List<Makeup>? = null
     //private lateinit var binding: ActivityMainBinding
 
     class StringViewHolder(root: View, val textView: TextView) : RecyclerView.ViewHolder(root)
@@ -24,7 +24,7 @@ class AdapterString : RecyclerView.Adapter<AdapterString.StringViewHolder> () {
 
     override fun onBindViewHolder(holder: StringViewHolder, position: Int) {
         listaDatos?.let {
-            holder.textView.text = it[position]
+            holder.textView.text = it[position].name
         }
     }
 
@@ -35,7 +35,7 @@ class AdapterString : RecyclerView.Adapter<AdapterString.StringViewHolder> () {
         return 0
     }
 
-    suspend fun setData(string : List<String>) {
+    suspend fun setData(string : List<Makeup>) {
         listaDatos = string
         withContext(Dispatchers.Main) {
             notifyDataSetChanged()

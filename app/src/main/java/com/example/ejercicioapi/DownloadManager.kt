@@ -7,20 +7,36 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import okhttp3.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 
 class DownloadManager {
 
     companion object {
-        suspend fun downloadApiResults() : List<String> {
-
+        suspend fun downloadApiResults() : List<Makeup> {
             // Conexión a Internet
             val client = OkHttpClient()
-            val url = "http://makeup-api.herokuapp.com/api/v1/products.json"
-            val request = Request.Builder().url(url).build()
-            val call = client.newCall(request)
-            call.enqueue(object : Callback {
+            val url = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
+            val request = Request.Builder()
+                    .url(url)
+                    .build()
+            val call = client.newCall(request).execute()
+
+            val bodyInString = call.body?.string()
+            bodyInString?.let {
+
+                val results = JSONArray(it)
+                results?.let {
+                    val gson = Gson()
+
+                    val itemType = object : TypeToken<List<Makeup>>() {}.type
+
+                    val list = gson.fromJson<List<Makeup>>(it.toString(), itemType)
+                    return list
+                }
+            }
+            /*call.enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     e.printStackTrace()
 
@@ -43,10 +59,10 @@ class DownloadManager {
                     }
                 }
 
-            })
+            })*/
 
             delay(3000)
-            return listOf("Uno", "Dos", "Tres", "Cuatro")
+            return listOf()
         }
 
         suspend fun downloadApiSingleResult(userChoise : String) : String {
