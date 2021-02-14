@@ -2,5 +2,5 @@
     <string name="app_name">EjercicioAPI</string>
     <string name="b_next">Next</string>
     <string name="b_search">Search</string>
-    <string name="et_activity_details">Write what you are looking for</string>
+    <string name="et_activity_details">Write what product you are looking for</string>
 </resources>

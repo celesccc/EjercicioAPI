@@ -3,29 +3,45 @@ package com.example.ejercicioapi
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ejercicioapi.databinding.ActivityMainBinding
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class AdapterString : RecyclerView.Adapter<AdapterString.StringViewHolder> () {
 
     private var listaDatos : List<Makeup>? = null
+    private lateinit var recyclerView: RecyclerView
     //private lateinit var binding: ActivityMainBinding
 
-    class StringViewHolder(root: View, val textView: TextView) : RecyclerView.ViewHolder(root)
+    class StringViewHolder(var root: View, val textView: TextView, val imageView: ImageView) : RecyclerView.ViewHolder(root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StringViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_main_item, parent, false)
         val textView = view.findViewById<TextView>(R.id.tv_activity_main_item)
-        return StringViewHolder(view, textView)
+        val imageView = view.findViewById<ImageView>(R.id.iv_image_main)
+        return StringViewHolder(view, textView, imageView)
     }
 
     override fun onBindViewHolder(holder: StringViewHolder, position: Int) {
         listaDatos?.let {
             holder.textView.text = it[position].name
+            Picasso.get().load(it[position].imageLink).into(holder.imageView)
+
+            holder.root.setOnClickListener {
+                val pos = recyclerView.getChildLayoutPosition(it)
+                listaDatos?.get(pos)?.let { i ->
+                    DetailsActivity.createDetailsActivity(holder.root.context, i.toString())
+                }
+            }
         }
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        this.recyclerView = recyclerView
     }
 
     override fun getItemCount(): Int {
@@ -35,12 +51,10 @@ class AdapterString : RecyclerView.Adapter<AdapterString.StringViewHolder> () {
         return 0
     }
 
-    suspend fun setData(string : List<Makeup>) {
+    suspend fun setData(string: List<Makeup>) {
         listaDatos = string
         withContext(Dispatchers.Main) {
             notifyDataSetChanged()
         }
     }
-
-
 }

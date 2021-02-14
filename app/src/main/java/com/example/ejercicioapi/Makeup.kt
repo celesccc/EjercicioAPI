@@ -22,8 +22,11 @@ data class Makeup (
     ) {
 
     override fun toString(): String {
-        return "Maquillaje $name, de la marca $brand y precio de $price€"
+        return "MAQUILLAJE: $name \n\nDESCRIPCIÓN: $description \n\nPRECIO: $price€"
     }
 
-
+    constructor(): this (
+            "", "", 0.0, "", "", "","", "", "",
+            0.0, "", "", "", "", "", ""
+            )
 }

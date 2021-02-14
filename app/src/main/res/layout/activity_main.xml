@@ -14,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/b_siguiente"
+        android:background="@color/light_light_pink"
         />
 
     <Button
@@ -23,7 +24,11 @@
         android:text="@string/b_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/purple"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"
