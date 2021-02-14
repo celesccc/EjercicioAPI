@@ -14,7 +14,6 @@ class AdapterString : RecyclerView.Adapter<AdapterString.StringViewHolder> () {
 
     private var listaDatos : List<Makeup>? = null
     private lateinit var recyclerView: RecyclerView
-    //private lateinit var binding: ActivityMainBinding
 
     class StringViewHolder(var root: View, val textView: TextView, val imageView: ImageView) : RecyclerView.ViewHolder(root)
 

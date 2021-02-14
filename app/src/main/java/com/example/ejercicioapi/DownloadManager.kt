@@ -10,9 +10,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import okhttp3.*
 import org.json.JSONArray
-import org.json.JSONObject
-import java.io.IOException
-import java.util.logging.Level.INFO
 
 class DownloadManager {
 

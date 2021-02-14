@@ -3,7 +3,6 @@ package com.example.ejercicioapi
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -46,7 +45,6 @@ class DetailsActivity : AppCompatActivity() {
             withContext(Dispatchers.Main) {
                 if (resultado.isNotEmpty()) {
                     resultado.forEach {
-                        //Log.w("cel", it.name)
                         binding.tvResultados.text = "MAQUILLAJE: " + it?.name +
                                 "\n\nDESCRIPCIÓN: " + it?.description +
                                 "\n\nPRECIO: " + it?.price +"€\n\n"
