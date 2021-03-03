@@ -1,5 +1,6 @@
 package com.example.ejercicioapi
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

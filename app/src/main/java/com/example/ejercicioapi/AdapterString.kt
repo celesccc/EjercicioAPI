@@ -29,8 +29,8 @@ class AdapterString : RecyclerView.Adapter<AdapterString.StringViewHolder> () {
             holder.textView.text = it[position].name
             Picasso.get().load(it[position].imageLink).into(holder.imageView)
 
-            holder.root.setOnClickListener {
-                val pos = recyclerView.getChildLayoutPosition(it)
+            holder.root.setOnClickListener {                        // dónde se ha realizado la pulsación
+                val pos = recyclerView.getChildLayoutPosition(it)   // a qué elemento de la lista le corresponde
                 listaDatos?.get(pos)?.let { i ->
                     DetailsActivity.createDetailsActivity(holder.root.context, i.toString())
                 }

@@ -2,6 +2,7 @@ package com.example.ejercicioapi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,9 +24,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Log.d("MiTAG", "onCreate")
+        Log.e("MiTAG", "onCreate")
+        Log.w("MiTAG2", "onCreate")
+        Log.i("MiTAG3", "onCreate")
+        Log.v("MiTAG4", "onCreate ")
+
         model = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         createRecyclerView()
+
+        //Log.d("MiPRUEBA", "${createRecyclerView()}")
 
         GlobalScope.launch (Dispatchers.IO) {
             val resultados = model.getApiResults()
@@ -36,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         binding.bSiguiente.setOnClickListener {
             DetailsActivity.createDetailsActivity(this)
         }
-
     }
 
     private fun createRecyclerView() {
